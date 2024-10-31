@@ -3,7 +3,7 @@
 
 /* Primeng Settings */
 @import "primeng/resources/primeng.css";
-@import "primeng/resources/themes/aura-dark-green/theme.css";
+@import "primeng/resources/themes/aura-light-green/theme.css";
 @import "primeicons/primeicons.css";
 
 @layer tailwind-base {
