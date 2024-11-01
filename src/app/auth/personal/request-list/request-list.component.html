@@ -1,0 +1,32 @@
+<div class="w-3/5 mx-auto pt-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <p-card
+      *ngFor="let company of mockCompanies"
+      header="{{ company.name }}"
+      subheader="{{ company.job }}"
+      [style]="{ width: '100%' }"
+    >
+      <ng-template pTemplate="header">
+        <div class="flex justify-center">
+          <img
+            alt="Card"
+            src="{{ company.logoUrl }}"
+            class="w-full h-auto max-h-32 object-contain"
+          />
+        </div>
+      </ng-template>
+      <p>{{ company.description }}</p>
+      <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+          <!-- <p-button
+            label="Cancel"
+            severity="secondary"
+            class="w-full"
+            styleClass="w-full"
+          /> -->
+          <p-button label="See more.." class="w-full" styleClass="w-full" />
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
