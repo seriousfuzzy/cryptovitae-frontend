@@ -1,1 +1,108 @@
-<p>personal-home works!</p>
+<div class="flex flex-row mx-4 h-screen max-h-screen">
+	<!-- Sidebar -->
+	<div class="sticky h-screen flex items-center">
+		<div
+			class="h-[95vh] w-56 bg-custom-black rounded-xl flex flex-col justify-between p-5"
+		>
+			<!-- Logo -->
+			<div class="flex items-center">
+				<img
+					src="../assets/logo/EcofinIcon.png"
+					alt="logo"
+					class="w-8"
+				/>
+				<span
+					class="text-xl font-medium font-sans tracking-widest text-white ml-2"
+					>Crypto Vitae</span
+				>
+			</div>
+
+			<!-- Sidebar Items -->
+			<div class="flex flex-col gap-4">
+				<div
+					*ngFor="let item of sidebarItems.slice(0, 4)"
+					class="flex gap-2 items-center py-4 px-3 rounded-lg cursor-pointer hover:bg-[#30333A] transition-all duration-300 ease-in-out"
+					[ngClass]="[item.active ? 'bg-[#30333A]' : '']"
+					(click)="selectItem(item)"
+				>
+					<span
+						class="pi"
+						[ngClass]="[
+							item.active
+								? 'text-white transition duration-300 ease-in-out'
+								: 'text-secondary transition duration-300 ease-out',
+							item.icon
+						]"
+					></span>
+					<span
+						class="text-sm ml-1"
+						[ngClass]="[
+							item.active
+								? 'text-white transition duration-300 ease-in-out'
+								: 'text-secondary transition duration-300 ease-out'
+						]"
+						>{{ item.name }}</span
+					>
+				</div>
+			</div>
+			<div class="flex flex-col gap-4">
+				<div class="mx-2 h-px bg-gray-600"></div>
+				<div
+					*ngFor="let item of sidebarItems.slice(4, 6)"
+					class="flex gap-2 items-center py-4 px-3 rounded-lg cursor-pointer hover:bg-[#30333A] transition-all duration-300 ease-in-out"
+					[ngClass]="[item.active ? 'bg-[#30333A]' : '']"
+					(click)="selectItem(item)"
+				>
+					<span
+						class="pi"
+						[ngClass]="[
+							item.active
+								? 'text-white transition duration-300 ease-in-out'
+								: 'text-secondary transition duration-300 ease-out',
+							item.icon
+						]"
+					></span>
+					<span
+						class="text-sm ml-1"
+						[ngClass]="[
+							item.active
+								? 'text-white transition duration-300 ease-in-out'
+								: 'text-secondary transition duration-300 ease-out'
+						]"
+						>{{ item.name }}</span
+					>
+				</div>
+				<!-- Change theme -->
+				<div
+					(click)="logout()"
+					class="flex items-center justify-center p-2 rounded-lg cursor-pointer hover:bg-[#30333A] transition-all duration-300 ease-in-out"
+				>
+					<span class="text-sm text-secondary"> Cerrar Sesion </span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Content -->
+	<div class="flex flex-col mx-8 w-full h-full overflow-hidden">
+		<div class="w-full flex items-center justify-between pt-6 pb-1">
+			<div class="flex items-center gap-2">
+				<span class=""></span>
+				<input
+					type="text"
+					placeholder="Hola de nuevo!"
+					formControlName="search"
+					class="text-base font-sans border-0 placeholder:text-base focus:outline-none p-2"
+				/>
+			</div>
+			<div class="flex items-center gap-10">
+				<span class="pi pi-sun cursor-pointer"></span>
+				<span class="pi pi-bell cursor-pointer"></span>
+				<span class="pi pi-cog cursor-pointer"></span>
+			</div>
+		</div>
+		<div class="overflow-y-auto max-h-full">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>
