@@ -1,0 +1,53 @@
+.animated-text span {
+    position: relative;
+}
+
+.animated-text span::before {
+    content: "Crea";
+    color: #581FE6;
+    animation: words 20s infinite;
+}
+
+.animated-text span::after{
+    content: "";
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    background-color: #FFFFFF;
+    border-left: 2px solid #000000;
+    right: -8px;
+    animation: cursor .8s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+    to{
+        border-left: 2px solid #ff7f5000;
+    }
+}
+
+@keyframes words {
+    0%,20%{
+        content: "Crea";
+    }
+    21%,40%{
+        content: "Asegurate";
+    }
+    41%,60%{
+        content: "Etc";
+    }
+    61%,80%{
+        content: "Nose";
+    }
+    81%,100%{
+        content: "Ya decidimos luego";
+    }
+}
+
+@keyframes typing {
+    10%,15%,30%,35%,50%,55%,70%,75%,90%,95%{
+        width: 0;
+    }
+    5%,20%,25%,40%,45%,60%,65%,80%,85%{
+        width: calc(100% + 8px);
+    }
+}
