@@ -1,4 +1,4 @@
-<div class="w-3/5 mx-auto pt-8">
+<div class="w-4/5 mx-auto pt-8">
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <p-card
       *ngFor="let company of mockCompanies"
@@ -24,7 +24,12 @@
             class="w-full"
             styleClass="w-full"
           /> -->
-          <p-button label="See more.." class="w-full" styleClass="w-full" />
+          <p-button
+            label="See more.."
+            class="w-full"
+            styleClass="w-full"
+            (click)="goToConfirmation(company.id)"
+          />
         </div>
       </ng-template>
     </p-card>
