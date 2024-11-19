@@ -1,0 +1,52 @@
+<!-- detailed-info.component.html -->
+<div class="container mx-auto p-8">
+  <div class="bg-white shadow-lg rounded-lg p-6">
+    <!-- Header with company name and job title -->
+    <div class="mb-4">
+      <h1 class="text-3xl font-bold">{{ company!.name }}</h1>
+      <h2 class="text-xl text-gray-600">{{ company!.job }}</h2>
+    </div>
+
+    <!-- Company logo -->
+    <div class="flex justify-center mb-6">
+      <img
+        alt="Company Logo"
+        src="{{ company!.logoUrl }}"
+        class="w-32 h-32 object-contain"
+      />
+    </div>
+
+    <!-- Description -->
+    <div class="mb-6">
+      <p class="text-gray-700">{{ company!.description }}</p>
+    </div>
+
+    <!-- Skills, frameworks, and programming languages -->
+    <div class="mb-6">
+      <h3 class="text-xl font-semibold mb-2">Skills & Technologies</h3>
+      <div class="flex flex-wrap gap-2">
+        <span
+          *ngFor="let skill of company!.skills"
+          class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full"
+          >{{ skill }}</span
+        >
+      </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="flex gap-4">
+      <button
+        class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+        (click)="confirm()"
+      >
+        Confirm
+      </button>
+      <button
+        class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+        (click)="reject()"
+      >
+        Reject
+      </button>
+    </div>
+  </div>
+</div>
