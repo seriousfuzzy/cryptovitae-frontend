@@ -15,25 +15,20 @@
       Inicia sesion con Metamask
     </h2>
 
-    <div class="flex flex-col justify-center items-center py-4 gap-4">
-      <!-- <div class="flex flex-col gap-3">
-        @for (category of categories; track $index) {
-        <p-radioButton
-          [inputId]="category.key"
-          name="category"
-          [value]="category"
-        />
-        <label [for]="category.key" class="ml-2">
-          {{ category.name }}
-        </label>
-        }
-      </div> -->
+    <div class="flex justify-center items-center py-4 gap-4">
+      <p-dropdown
+        [formControl]="categoryControl"
+        [options]="categories"
+        optionLabel="name"
+        placeholder="Selecciona tu categoria"
+      />
 
       <p-button
         label="Metamask"
         (onClick)="login()"
         [rounded]="true"
         [outlined]="true"
+        [disabled]="!categoryControl.value"
       ></p-button>
       <p-toast />
     </div>
