@@ -4,17 +4,13 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { MetaMaskService } from '../../../services/metamask.service';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-login',
@@ -28,17 +24,18 @@ import { MetaMaskService } from '../../../services/metamask.service';
     ReactiveFormsModule,
     ToastModule,
     RadioButtonModule,
+    DropdownModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
   accountAddress: string | null = null;
-  selectedCategory: any = null;
+  categoryControl: FormControl = new FormControl('', Validators.required);
 
   categories: any[] = [
-    { name: 'Personal', key: 'personal' },
-    { name: 'Empresa', key: 'empresa' },
+    { name: 'Personal', code: 'personal' },
+    { name: 'Empresa', code: 'empresa' },
   ];
 
   constructor(
@@ -47,13 +44,20 @@ export class LoginComponent {
     private metaMaskService: MetaMaskService
   ) {}
 
-  ngOnInit() {
-    this.selectedCategory = this.categories[1];
-  }
-
   async login(): Promise<void> {
-    this.accountAddress = await this.metaMaskService.connectMetaMask();
-    if (this.accountAddress) {
+    await this.metaMaskService.connectMetaMask().then((accountAddress) => {
+      if (!accountAddress) {
+        console.error('Failed to connect to MetaMask');
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to connect to MetaMask',
+          life: 2000,
+        });
+        return;
+      }
+
+      this.accountAddress = accountAddress;
       console.log('Connected account:', this.accountAddress);
       this.messageService.add({
         severity: 'success',
@@ -62,10 +66,13 @@ export class LoginComponent {
         life: 2000,
       });
       setTimeout(() => {
-        this.router.navigate(['/dashboard']);
+        if (this.categoryControl.value.code === 'empresa') {
+          this.router.navigate(['/auth/company']);
+          return;
+        } else {
+          this.router.navigate(['/auth/personal']);
+        }
       }, 2000);
-    } else {
-      console.error('Failed to connect to MetaMask.');
-    }
+    });
   }
 }
