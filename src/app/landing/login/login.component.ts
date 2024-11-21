@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import { MetaMaskService } from '../../../services/metamask.service';
+import { MetaMaskService } from '../../services/metamask.service';
 import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
