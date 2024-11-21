@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="flex justify-center items-center h-screen px-16">
+  <div class="w-1/2 flex flex-col items-center gap-4 justify-center">
+    <img src="../assets/logo/logoEcofinPurple.png" alt="logo" class="w-52" />
+    <span class="text-center text-2xl font-sans px-16"
+      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+      facilis dolore ipsam rerum quae, hic deserunt deleniti autem nihil sequi
+      dolorem excepturi magnam inventore! Blanditiis id qui impedit itaque
+      autem.</span
+    >
+  </div>
+  <p-divider layout="vertical" class="h-full"></p-divider>
+
+  <div class="w-1/2">
+    <h2 class="text-3xl text-center font-semibold py-4">
+      Inicia sesion con Metamask
+    </h2>
+
+    <div class="flex flex-col justify-center items-center py-4 gap-4">
+      <!-- <div class="flex flex-col gap-3">
+        @for (category of categories; track $index) {
+        <p-radioButton
+          [inputId]="category.key"
+          name="category"
+          [value]="category"
+        />
+        <label [for]="category.key" class="ml-2">
+          {{ category.name }}
+        </label>
+        }
+      </div> -->
+
+      <p-button
+        label="Metamask"
+        (onClick)="login()"
+        [rounded]="true"
+        [outlined]="true"
+      ></p-button>
+      <p-toast />
+    </div>
+  </div>
+</div>
