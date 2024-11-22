@@ -1,0 +1,72 @@
+<!-- <div class="w-3/5 mx-auto pt-8">
+  <div
+    *ngFor="let company of companies"
+    class="flex items-start gap-3 border-b border-gray-200 py-4"
+  >
+    <div class="flex-shrink-0">
+      <img
+        alt="{{ company.name }} Logo"
+        [src]="company.logoUrl"
+        class="w-16 h-16 rounded-full object-cover"
+      />
+    </div>
+    <div class="flex-1 max-w-full">
+      <h2 class="text-xl font-semibold">{{ company.name }}</h2>
+      <p class="text-gray-600">{{ company.job }}</p>
+      <p class="text-gray-800 overflow-hidden text-ellipsis whitespace-nowrap">
+        {{ company.description }}
+      </p>
+      <div class="flex flex-wrap gap-2 mt-2">
+        <ng-container *ngFor="let skill of company.skills">
+          <span
+            class="inline-block bg-blue-200 text-blue-800 text-sm px-2 py-1 rounded-full"
+          >
+            {{ skill }}
+          </span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="w-3/5 mx-auto pt-8">
+  <div
+    *ngFor="let company of companies"
+    class="flex items-start gap-3 border-b border-gray-200 py-4"
+  >
+    <div class="flex-shrink-0">
+      <img
+        alt="{{ company.name }} Logo"
+        [src]="company.logoUrl"
+        class="w-16 h-16 rounded-full object-cover"
+      />
+    </div>
+    <div class="flex-1 max-w-full">
+      <div class="flex items-center gap-4">
+        <!-- Company name with dates -->
+        <div class="flex flex-col">
+          <h2 class="text-xl font-semibold">{{ company.name }}</h2>
+          <div class="text-gray-600 text-sm flex items-center gap-4">
+            <p>
+              {{ company.startDate | date : "MMM d, y" }} -
+              {{ company.endDate | date : "MMM d, y" }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="text-gray-600">{{ company.job }}</p>
+      <p class="text-gray-800 overflow-hidden text-ellipsis whitespace-nowrap">
+        {{ company.description }}
+      </p>
+      <div class="flex flex-wrap gap-2 mt-2">
+        <ng-container *ngFor="let skill of company.skills">
+          <span
+            class="inline-block bg-blue-200 text-blue-800 text-sm px-2 py-1 rounded-full"
+          >
+            {{ skill }}
+          </span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
