@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Company } from '../../interfaces/company.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,8 @@ export class CompanyRequestService {
       logoUrl:
         'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/nft-art-design-logo-png-template-484a974e99203f809abdc7dfeeeb2816_screen.jpg?ts=1645947909',
       skills: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'AWS'],
+      startDate: '2023-01-01', // Fecha de inicio
+      endDate: '2023-12-31', // Fecha de fin
     },
     {
       id: 2,
@@ -30,6 +33,8 @@ export class CompanyRequestService {
         'Business Development',
         'Competitive Analysis',
       ],
+      startDate: '2023-02-01',
+      endDate: '2023-11-30',
     },
     {
       id: 3,
@@ -46,6 +51,8 @@ export class CompanyRequestService {
         'UI/UX Design',
         'Typography',
       ],
+      startDate: '2023-03-01',
+      endDate: '2023-10-31',
     },
     {
       id: 4,
@@ -62,6 +69,8 @@ export class CompanyRequestService {
         'Sustainability',
         'Project Management',
       ],
+      startDate: '2023-04-01',
+      endDate: '2023-09-30',
     },
     {
       id: 5,
@@ -77,6 +86,8 @@ export class CompanyRequestService {
         'Patient Care',
         'Process Improvement',
       ],
+      startDate: '2023-05-01',
+      endDate: '2023-08-31',
     },
     {
       id: 6,
@@ -92,6 +103,8 @@ export class CompanyRequestService {
         'Risk Management',
         'Financial Analysis',
       ],
+      startDate: '2023-06-01',
+      endDate: '2023-07-31',
     },
     {
       id: 7,
@@ -108,6 +121,8 @@ export class CompanyRequestService {
         'PPC Advertising',
         'Analytics',
       ],
+      startDate: '2023-07-01',
+      endDate: '2023-12-31',
     },
     {
       id: 8,
@@ -123,15 +138,8 @@ export class CompanyRequestService {
         'Online Course Creation',
         'Learning Management Systems',
       ],
+      startDate: '2023-08-01',
+      endDate: '2023-11-30',
     },
   ];
-}
-
-interface Company {
-  id: number;
-  name: string;
-  job: string;
-  description: string;
-  logoUrl: string;
-  skills: string[];
 }

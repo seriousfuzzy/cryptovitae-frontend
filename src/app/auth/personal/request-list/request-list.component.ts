@@ -4,6 +4,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { CompanyRequestService } from '../../services/company-request.service';
+import { Company } from '../../../interfaces/company.interface';
 @Component({
   selector: 'app-request-list',
   standalone: true,
@@ -24,12 +25,4 @@ export class RequestListComponent {
   goToConfirmation(id: number): void {
     this.router.navigate(['/auth/personal/request-confirmation', id]);
   }
-}
-interface Company {
-  id: number;
-  name: string;
-  job: string;
-  description: string;
-  logoUrl: string;
-  skills: string[];
 }
