@@ -1,0 +1,47 @@
+<div class="flex flex-col gap-4">
+  <div class="flex justify-between gap-8 w-full p-4 rounded-lg bg-green-300 mt-4">
+    <span class="flex flex-col gap-4 text-white">
+      <span class="font-bold text-xl text-black">Crea tu empresa </span>
+      <span class="text-slate-800">
+        Crea tu empresa y comienza a gestionar la información de tus empleados
+      </span>
+    </span>
+    <img
+      class="w-64 rounded-2xl"
+      src="https://archive.smashing.media/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/de9ee388-c756-449c-84e0-3318aba74f78/open-peeps-opt.png"
+    />
+  </div>
+
+  <div class="flex gap-10">
+    <div>
+      <p-card
+        header="Test Company"
+        [style]="{ width: '360px' }"
+      >
+        <ng-template pTemplate="header">
+          <img
+            alt="Card"
+            src="https://primefaces.org/cdn/primeng/images/card-ng.jpg"
+          />
+        </ng-template>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <ng-template pTemplate="footer">
+          <div class="flex gap-3 mt-1">
+            <p-button label="Ver mas..." class="w-full" styleClass="w-full" />
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+
+    <div
+      class="flex flex-col gap-4 items-center justify-center border-2 border-dashed border-slate-400 px-32 rounded-lg"
+    >
+      <p-button
+        icon="pi pi-plus"
+        label="Crear"
+        [outlined]="true"
+        severity="secondary"
+      ></p-button>
+    </div>
+  </div>
+</div>
