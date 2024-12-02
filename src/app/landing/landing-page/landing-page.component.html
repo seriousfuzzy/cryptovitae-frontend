@@ -1,1 +1,53 @@
-<p>landing-page works!</p>
+<div class="flex flex-col my-14 mx-20">
+  <!-- Navbar -->
+  <div class="flex items-center justify-center lg:gap-56 gap-32">
+    <!-- Logo -->
+    <div class="">
+      <img
+        src="../assets/logo/logoEcofinHorizontal.png"
+        alt="logo"
+        class="h-8"
+      />
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex gap-2">
+      <p-button [outlined]="true" label="Servicios"></p-button>
+      <p-button [text]="true" label="Acerca de"></p-button>
+      <p-button [outlined]="true" label="Contacto"></p-button>
+      <p-button [text]="true" label="Reseñas"></p-button>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div
+    class="flex lg:flex-row flex-col items-center justify-center mt-20 gap-8"
+  >
+    <div class="flex flex-col">
+      <div class="text-center text-8xl tracking-tight animated-text">
+        Crypto Vitae <br />
+        <span></span>
+      </div>
+
+      <div class="text-center text-xl lg:w-[660px] mt-14">
+        Ecofin está centrado en facilitar el desarrollo de infraestructuras
+        sostenibles y resilientes mediante un mayor apoyo financiero,
+        tecnológico y técnico a los países menos adelantados como Bolivia,
+        tomando en cuenta pequeñas provincias de Santa Cruz de la Sierra.
+      </div>
+
+      <div class="flex items-center justify-center gap-4 mt-14 grid-cols">
+        <p-button
+          label="Iniciar sesion"
+          [outlined]="true"
+          [rounded]="true"
+          size="large"
+          (onClick)="goToLogin()"
+        ></p-button>
+      </div>
+    </div>
+    <div class="">
+      <img src="../assets/images/finances.png" class="lg:h-96 h-auto" />
+    </div>
+  </div>
+</div>
