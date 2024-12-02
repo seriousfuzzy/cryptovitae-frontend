@@ -16,22 +16,22 @@ export class CompanyHomeComponent {
   // Aca agregan las rutas que necesiten porfa
   sidebarItems = [
     {
-      name: 'Home',
+      name: 'Mis empresas',
       icon: 'pi-briefcase',
       active: false,
-      route: '/app/manage-projects',
+      route: '/auth/company/my-companies',
     },
     {
       name: 'Ver empleados',
       icon: 'pi-search-plus',
       active: false,
-      route: '/app/my-donations',
+      route: '/auth/company/employees',
     },
     {
       name: 'Buscar prospectos',
       icon: 'pi-search',
       active: false,
-      route: '/app/explore-projects',
+      route: '/auth/company/prospects',
     },
   ];
 
