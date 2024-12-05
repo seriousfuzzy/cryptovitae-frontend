@@ -25,13 +25,13 @@ export class PersonalHomeComponent implements OnInit {
       name: 'Mis solicitudes',
       icon: 'pi-chart-bar',
       active: false,
-      route: '/app/my-donations',
+      route: '/auth/personal/request-list',
     },
     {
       name: 'Mi CV',
       icon: 'pi-search',
       active: false,
-      route: '/app/explore-projects',
+      route: '/auth/personal/summary',
     },
   ];
 
