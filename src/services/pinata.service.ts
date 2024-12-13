@@ -55,7 +55,7 @@ export class PinataService {
             return {
               imageCid,
               jsonCid: jsonResponse.IpfsHash,
-              tokenUri: `https://gateway.pinata.cloud/ipfs/${jsonResponse.IpfsHash}`,
+              tokenUri: `ipfs://${jsonResponse.IpfsHash}`,
             };
           })
         );
