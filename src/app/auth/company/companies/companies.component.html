@@ -1,5 +1,7 @@
 <div class="flex flex-col gap-4">
-  <div class="flex justify-between gap-8 w-full p-4 rounded-lg bg-green-300 mt-4">
+  <div
+    class="flex justify-between gap-8 w-full p-4 rounded-lg bg-green-300 mt-4"
+  >
     <span class="flex flex-col gap-4 text-white">
       <span class="font-bold text-xl text-black">Crea tu empresa </span>
       <span class="text-slate-800">
@@ -14,10 +16,7 @@
 
   <div class="flex gap-10">
     <div>
-      <p-card
-        header="Test Company"
-        [style]="{ width: '360px' }"
-      >
+      <p-card header="Test Company" [style]="{ width: '360px' }">
         <ng-template pTemplate="header">
           <img
             alt="Card"
@@ -27,7 +26,12 @@
         <p>Lorem ipsum dolor sit amet...</p>
         <ng-template pTemplate="footer">
           <div class="flex gap-3 mt-1">
-            <p-button label="Ver mas..." class="w-full" styleClass="w-full" />
+            <p-button
+              label="Ver mas..."
+              class="w-full"
+              styleClass="w-full"
+              (click)="goToCompanyInfo()"
+            />
           </div>
         </ng-template>
       </p-card>
@@ -41,17 +45,6 @@
         label="Crear"
         [outlined]="true"
         severity="secondary"
-      ></p-button>
-    </div>
-
-    <!-- Temp html to Test NFT Upload-->
-    <div class="flex flex-col">
-      <input type="file" id="nft-image" (change)="onImageSelected($event)" />
-      <p-button
-        label="Subir NFT"
-        [outlined]="true"
-        severity="secondary"
-        (onClick)="uploadNft()"
       ></p-button>
     </div>
   </div>

@@ -7,6 +7,7 @@ import { RequestConfirmationComponent } from './auth/personal/request-confirmati
 import { CvSummaryComponent } from './auth/personal/cv-summary/cv-summary.component';
 import { RequestListComponent } from './auth/personal/request-list/request-list.component';
 import { CompaniesComponent } from './auth/company/companies/companies.component';
+import { CompanyInfoComponent } from './auth/company/company-info/company-info.component';
 
 export const routes: Routes = [
   {
@@ -43,11 +44,15 @@ export const routes: Routes = [
         path: 'company',
         component: CompanyHomeComponent,
         children: [
-            {
-                path: 'my-companies',
-                component: CompaniesComponent
-            },
-        ]
+          {
+            path: 'my-companies',
+            component: CompaniesComponent,
+          },
+          {
+            path: 'company-info',
+            component: CompanyInfoComponent,
+          },
+        ],
       },
     ],
   },

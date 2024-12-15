@@ -1,0 +1,58 @@
+<!-- detailed-info.component.html -->
+<div class="flex flex-col gap-4 p-8">
+  <!-- Company Information Header -->
+  <div class="flex flex-col gap-4 bg-green-300 p-6 rounded-lg">
+    <div class="flex justify-between items-center">
+      <div class="text-white">
+        <h1 class="text-3xl font-bold">{{ company.name }}</h1>
+        <p class="text-xl text-black">{{ company.job }}</p>
+        <p class="text-slate-800 mt-2">
+          <span class="font-semibold">Start Date:</span>
+          {{ company.startDate }}
+          <span class="ml-4 font-semibold">End Date:</span>
+          {{ company.endDate }}
+        </p>
+      </div>
+      <img
+        class="w-32 h-32 rounded-full object-cover"
+        [src]="company.logoUrl"
+        alt="{{ company.name }} Logo"
+      />
+    </div>
+    <p class="text-gray-700 mt-4">{{ company.description }}</p>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="flex gap-6 mt-6">
+    <div class="flex flex-col gap-4 w-full">
+      <p-card header="Actions" [style]="{ width: '100%' }" class="bg-green-300">
+        <ng-template pTemplate="header">
+          <img
+            class="w-full h-24 object-cover rounded-t-lg"
+            src="https://archive.smashing.media/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/de9ee388-c756-449c-84e0-3318aba74f78/open-peeps-opt.png"
+            alt="Actions Header"
+          />
+        </ng-template>
+        <ng-template pTemplate="body">
+          <div class="flex flex-col gap-4">
+            <p-button
+              label="Add Employee"
+              icon="pi pi-user-plus"
+              class="bg-green-500 text-white w-full"
+            ></p-button>
+            <p-button
+              label="View Employees"
+              icon="pi pi-users"
+              class="bg-green-500 text-white w-full"
+            ></p-button>
+            <p-button
+              label="Search Prospects"
+              icon="pi pi-search"
+              class="bg-green-500 text-white w-full"
+            ></p-button>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>
