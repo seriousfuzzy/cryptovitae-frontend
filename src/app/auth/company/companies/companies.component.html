@@ -47,5 +47,16 @@
         severity="secondary"
       ></p-button>
     </div>
+
+    <!-- Temp html to Test NFT Upload-->
+    <div class="flex flex-col">
+      <input type="file" id="nft-image" (change)="onImageSelected($event)" />
+      <p-button
+        label="Subir NFT"
+        [outlined]="true"
+        severity="secondary"
+        (onClick)="uploadNft()"
+      ></p-button>
+    </div>
   </div>
 </div>
