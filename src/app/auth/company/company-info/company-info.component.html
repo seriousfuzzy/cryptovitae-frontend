@@ -88,11 +88,112 @@
         <div class="p-4">
           <h3 class="text-lg font-bold mb-4">Actions</h3>
           <button
+            (click)="display = true"
             class="border border-gray-300 text-gray-800 bg-white hover:bg-green-500 hover:text-white rounded-lg px-4 py-2 text-sm font-semibold flex items-center gap-2 w-full"
           >
             <i class="pi pi-user-plus"></i>
             Add Employee
           </button>
+          <!-- Add Employee Dialog -->
+          <p-dialog
+            header="Employee Information"
+            [(visible)]="display"
+            [modal]="true"
+            [style]="{ width: '50vw' }"
+            [baseZIndex]="10000"
+          >
+            <div class="p-4 bg-white">
+              <form class="space-y-4">
+                <div class="field">
+                  <label
+                    for="address"
+                    class="block text-sm font-semibold text-gray-700"
+                    >Address</label
+                  >
+                  <input
+                    pInputText
+                    id="address"
+                    class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                  />
+                </div>
+
+                <div class="field">
+                  <label
+                    for="employee"
+                    class="block text-sm font-semibold text-gray-700"
+                    >Employee</label
+                  >
+                  <input
+                    pInputText
+                    id="employee"
+                    class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                  />
+                </div>
+
+                <div class="field">
+                  <label
+                    for="role"
+                    class="block text-sm font-semibold text-gray-700"
+                    >Role</label
+                  >
+                  <input
+                    pInputText
+                    id="role"
+                    class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                  />
+                </div>
+
+                <div class="field">
+                  <label
+                    for="period"
+                    class="block text-sm font-semibold text-gray-700"
+                    >Period</label
+                  >
+                  <input
+                    pInputText
+                    id="period"
+                    class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                  />
+                </div>
+
+                <div class="field">
+                  <label
+                    for="skills"
+                    class="block text-sm font-semibold text-gray-700"
+                    >Skills</label
+                  >
+                  <input
+                    pInputText
+                    id="skills"
+                    class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                  />
+                </div>
+
+                <div class="field">
+                  <label
+                    for="review"
+                    class="block text-sm font-semibold text-gray-700"
+                    >Review</label
+                  >
+                  <textarea
+                    pInputTextarea
+                    id="review"
+                    rows="4"
+                    class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                  ></textarea>
+                </div>
+
+                <div class="flex justify-end">
+                  <p-button
+                    label="Submit"
+                    icon="pi pi-check"
+                    class="bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg"
+                  ></p-button>
+                </div>
+              </form>
+            </div>
+          </p-dialog>
+          <!-- End of Add Employee Dialog -->
           <button
             class="border border-gray-300 text-gray-800 bg-white hover:bg-green-500 hover:text-white rounded-lg px-4 py-2 text-sm font-semibold flex items-center gap-2 w-full mt-2"
           >
