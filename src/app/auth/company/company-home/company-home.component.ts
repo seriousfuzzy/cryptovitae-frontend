@@ -2,15 +2,16 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-company-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonModule],
+  imports: [CommonModule, RouterModule, ButtonModule, InputTextModule],
   templateUrl: './company-home.component.html',
-  styleUrl: './company-home.component.css'
+  styleUrl: './company-home.component.css',
 })
-export class CompanyHomeComponent {
+export class CompanyHomeComponent implements OnInit {
   constructor(private router: Router) {}
 
   // Aca agregan las rutas que necesiten porfa

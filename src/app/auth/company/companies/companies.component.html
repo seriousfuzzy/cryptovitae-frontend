@@ -45,18 +45,77 @@
         label="Crear"
         [outlined]="true"
         severity="secondary"
+        (onClick)="dialogVisible = true"
       ></p-button>
-    </div>
 
-    <!-- Temp html to Test NFT Upload-->
-    <div class="flex flex-col">
-      <input type="file" id="nft-image" (change)="onImageSelected($event)" />
-      <p-button
-        label="Subir NFT"
-        [outlined]="true"
-        severity="secondary"
-        (onClick)="uploadNft()"
-      ></p-button>
+      <p-dialog
+        header="Crear proyecto"
+        [modal]="true"
+        [draggable]="false"
+        [(visible)]="dialogVisible"
+        [style]="{ width: '50rem' }"
+        [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+      >
+        <form [formGroup]="companyForm" class="flex flex-col gap-8">
+          <div class="flex flex-col gap-2">
+            <label for="name">Nombre de la empresa</label>
+            <input
+              pInputText
+              id="name"
+              aria-describedby="name"
+              formControlName="name"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="description">Descripcion</label>
+            <input
+              pInputText
+              id="description"
+              aria-describedby="description"
+              formControlName="description"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label>Rubro</label>
+            <p-dropdown
+              formControlName="category"
+              [options]="categories"
+              optionLabel="name"
+              placeholder="Rubro de la empresa"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label>Subir imagen</label>
+            <p-fileUpload
+              mode="advanced"
+              [showUploadButton]="false"
+              chooseLabel="Subir"
+              chooseIcon="pi pi-upload"
+              name="demo[]"
+              url="https://www.primefaces.org/cdn/api/upload.php"
+              accept="image/*"
+              maxFileSize="10000000"
+              (onSelect)="onImageSelected($event)"
+            />
+          </div>
+        </form>
+
+        <div class="flex justify-end gap-4 mt-16">
+          <p-button
+            label="Cancelar"
+            severity="secondary"
+            (onClick)="dialogVisible = false"
+          ></p-button>
+          <p-button
+            label="Crear"
+            severity="primary"
+            (onClick)="createCompany()"
+          ></p-button>
+        </div>
+      </p-dialog>
     </div>
   </div>
 </div>
