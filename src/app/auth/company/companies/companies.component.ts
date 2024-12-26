@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { PinataService } from '../../../../services/pinata.service';
 import { DialogModule } from 'primeng/dialog';
 import {
   FormControl,
@@ -14,6 +13,7 @@ import {
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
+import { PinataService } from '../../../services/pinata.service';
 
 @Component({
   selector: 'app-companies',

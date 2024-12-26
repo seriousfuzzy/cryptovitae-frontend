@@ -8,7 +8,6 @@ import { CvSummaryComponent } from './auth/personal/cv-summary/cv-summary.compon
 import { RequestListComponent } from './auth/personal/request-list/request-list.component';
 import { CompaniesComponent } from './auth/company/companies/companies.component';
 import { CompanyInfoComponent } from './auth/company/company-info/company-info.component';
-import { ViewEmployeesComponent } from './auth/company/company-info/view-employees/view-employees.component';
 
 export const routes: Routes = [
   {
@@ -52,10 +51,6 @@ export const routes: Routes = [
           {
             path: 'company-info',
             component: CompanyInfoComponent,
-          },
-          {
-            path: 'employees',
-            component: ViewEmployeesComponent,
           },
         ],
       },
