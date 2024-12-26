@@ -1,0 +1,48 @@
+<div class="card">
+  <p-table [value]="employees" [tableStyle]="{ 'min-width': '60rem' }">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        Employees
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Profession</th>
+        <th>Skills</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-employee>
+      <tr>
+        <!-- Name -->
+        <td>{{ employee.name }}</td>
+        <!-- Image -->
+        <td>
+          <img
+            [src]="
+              'https://primefaces.org/cdn/primeng/images/demo/product/' +
+              employee.image
+            "
+            [alt]="employee.name"
+            width="100"
+            class="shadow-4"
+          />
+        </td>
+        <!-- Profesion -->
+        <td>{{ employee.profession }}</td>
+        <!-- Skills -->
+        <td>
+          @for (tag of employee.skills; track $index) {
+          <p-tag [value]="tag" [severity]="'danger'" />
+          }
+        </td>
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{ products ? products.length : 0 }} products.
+      </div>
+    </ng-template> -->
+  </p-table>
+</div>
