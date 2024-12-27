@@ -6,6 +6,9 @@ import { Company } from '../../../interfaces/company.interface';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { Router } from '@angular/router';
+import { CalendarModule } from 'primeng/calendar';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-company-info',
@@ -16,6 +19,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     DialogModule,
     InputTextModule,
     InputTextareaModule,
+    CalendarModule,
+    FormsModule,
   ],
   templateUrl: './company-info.component.html',
   styleUrl: './company-info.component.css',
@@ -23,7 +28,13 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 export class CompanyInfoComponent {
   company: Company;
   display: boolean = false;
-  constructor(private companyService: CompanyRequestService) {
+  startDate: Date = new Date();
+  endDate: Date = new Date();
+  
+  constructor(
+    private companyService: CompanyRequestService,
+    private router: Router
+  ) {
     this.company = this.companyService.mockCompanies[0];
   }
   showDialog() {
@@ -32,5 +43,9 @@ export class CompanyInfoComponent {
 
   hideDialog() {
     this.display = false;
+  }
+
+  onViewEmployees() {
+    this.router.navigate(['/auth/company/employees']);
   }
 }
