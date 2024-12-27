@@ -149,11 +149,20 @@
                     class="block text-sm font-semibold text-gray-700"
                     >Period</label
                   >
-                  <input
-                    pInputText
-                    id="period"
-                    class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
-                  />
+                  <div class="flex gap-4">
+                    <p-calendar
+                      id="startDate"
+                      [(ngModel)]="startDate"
+                      dateFormat="mm/dd/yy"
+                      placeholder="Start Date"
+                    ></p-calendar>
+                    <p-calendar
+                      id="endDate"
+                      [(ngModel)]="endDate"
+                      dateFormat="mm/dd/yy"
+                      placeholder="End Date"
+                    ></p-calendar>
+                  </div>
                 </div>
 
                 <div class="field">
@@ -193,9 +202,11 @@
               </form>
             </div>
           </p-dialog>
+
           <!-- End of Add Employee Dialog -->
           <button
             class="border border-gray-300 text-gray-800 bg-white hover:bg-green-500 hover:text-white rounded-lg px-4 py-2 text-sm font-semibold flex items-center gap-2 w-full mt-2"
+            (click)="onViewEmployees()"
           >
             <i class="pi pi-users"></i>
             View Employees
