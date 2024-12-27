@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -13,7 +13,7 @@ import {
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import { PinataService } from '../../../services/pinata.service';
+import { CompanyService } from '../../../services/company.service';
 
 @Component({
   selector: 'app-companies',
@@ -58,26 +58,11 @@ export class CompaniesComponent {
     },
   ];
 
-  constructor(private router: Router, private pinataService: PinataService) {}
+  constructor(private router: Router, private companyService: CompanyService) {}
 
   onImageSelected(event: any) {
     console.log('Image selected:', event);
     this.imageFile = event.currentFiles[0];
-  }
-
-  uploadNft() {
-    if (this.imageFile) {
-      this.pinataService.uploadNft(this.imageFile, {}).subscribe((result) => {
-        console.log('Image CID:', result.imageCid);
-        console.log('JSON CID:', result.jsonCid);
-        this.tokenUri = result.tokenUri;
-        console.log('Token URI:', this.tokenUri);
-
-        // call contract
-      });
-    } else {
-      console.error('No image file selected.');
-    }
   }
 
   goToCompanyInfo() {
@@ -85,12 +70,23 @@ export class CompaniesComponent {
   }
 
   createCompany() {
-    if (this.companyForm.valid) {
-      console.log('Company form:', this.companyForm.value);
-      this.dialogVisible = false;
-
-      this.uploadNft();
-      // call contract
+    if (!this.companyForm.valid) {
+      console.error('Company form is invalid.');
+      return;
     }
+
+    if (!this.imageFile) {
+      console.error('No image file selected.');
+      return;
+    }
+
+    this.dialogVisible = false;
+
+    this.companyService.createCompany({
+      name: this.companyForm.value.name,
+      description: this.companyForm.value.description,
+      category: this.companyForm.value.category.code,
+      imageFile: this.imageFile,
+    });
   }
 }
