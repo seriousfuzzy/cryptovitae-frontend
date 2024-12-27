@@ -39,7 +39,7 @@ export class PinataService {
     });
   }
 
-  public uploadNft(imageFile: File, nftAttributes: any): Observable<any> {
+  public uploadNft(imageFile: File, nftAttributes: any): Observable<string> {
     return this.uploadImage(imageFile).pipe(
       switchMap((imageResponse) => {
         const imageCid = imageResponse.IpfsHash;
@@ -49,14 +49,11 @@ export class PinataService {
           ...nftAttributes,
           image: tokenUri,
         };
+        console.log('NFT metadata:', jsonData);
 
         return this.uploadJson(jsonData).pipe(
           map((jsonResponse) => {
-            return {
-              imageCid,
-              jsonCid: jsonResponse.IpfsHash,
-              tokenUri: `ipfs://${jsonResponse.IpfsHash}`,
-            };
+            return `ipfs://${jsonResponse.IpfsHash}`;
           })
         );
       })
