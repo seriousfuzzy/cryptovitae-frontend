@@ -10,10 +10,10 @@ export const environment = {
   chainIds: {
     scroll: 534351,
   },
-  contractAdresses: {
+  contractAddresses: {
     cryptoVitaeCompanyNFT: {
       scroll: '0xDC177b36a0Cf02eD99f6DBc8fF3E000B5E4ed980',
-      ether: '0x497d12890ea91a6c28211d75d5e2610623f9b7e1',
+      ether: '0xf4ac8ae9e7739d271ad94d5f44ee0997213f9cd5',
     },
   },
 };

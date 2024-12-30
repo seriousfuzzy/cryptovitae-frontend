@@ -39,7 +39,7 @@ export class CompanyService {
   async getCompanies(): Promise<void> {
     const contract = await this.blockchainService.getContractInstance(
       CryptoVitaeCompanyNFTAbi,
-      environment.contractAdresses.cryptoVitaeCompanyNFT.ether
+      environment.contractAddresses.cryptoVitaeCompanyNFT.ether
     );
     if (!contract) {
       console.error('No contract found');
@@ -91,7 +91,7 @@ export class CompanyService {
       .subscribe(async (tokenUri) => {
         const contract = await this.blockchainService.getContractInstance(
           CryptoVitaeCompanyNFTAbi,
-          environment.contractAdresses.cryptoVitaeCompanyNFT.ether
+          environment.contractAddresses.cryptoVitaeCompanyNFT.ether
         );
 
         if (contract) {
