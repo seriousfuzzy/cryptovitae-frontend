@@ -15,15 +15,13 @@
   </div>
 
   <div class="flex gap-10">
+    @for (company of companyService.companies(); track $index) {
     <div>
-      <p-card header="Test Company" [style]="{ width: '360px' }">
+      <p-card [header]="company.name" [style]="{ width: '360px' }">
         <ng-template pTemplate="header">
-          <img
-            alt="Card"
-            src="https://primefaces.org/cdn/primeng/images/card-ng.jpg"
-          />
+          <img alt="Card" [src]="company.imageUrl" />
         </ng-template>
-        <p>Lorem ipsum dolor sit amet...</p>
+        <p>{{ company.description }}</p>
         <ng-template pTemplate="footer">
           <div class="flex gap-3 mt-1">
             <p-button
@@ -36,6 +34,7 @@
         </ng-template>
       </p-card>
     </div>
+    }
 
     <div
       class="flex flex-col gap-4 items-center justify-center border-2 border-dashed border-slate-400 px-32 rounded-lg"

@@ -84,23 +84,6 @@ export class BlockchainService {
     }
   }
 
-  async estimateGasForTransaction(
-    contract: ethers.Contract,
-    methodName: string,
-    ...args: any[]
-  ): Promise<ethers.BigNumberish> {
-    try {
-      const gasEstimate = await (contract as any).estimateGas[methodName](
-        ...args
-      );
-      console.log(`Estimated gas for ${methodName}:`, gasEstimate.toString());
-      return gasEstimate;
-    } catch (error) {
-      console.error('Error estimating gas:', error);
-      throw error;
-    }
-  }
-
   async switchNetwork(chainId: number): Promise<void> {
     try {
       const hexChainId = ethers.toBeHex(chainId).replace(/^0x0+/, '0x');
