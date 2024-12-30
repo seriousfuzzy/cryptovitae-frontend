@@ -1,6 +1,7 @@
 export const environment = {
   pinata: {
     url: 'https://api.pinata.cloud',
+    ipfsGateway: 'https://turquoise-capitalist-walrus-249.mypinata.cloud/ipfs',
     ApiKey: 'fe9325fac07841c111f5',
     ApiSecret:
       '597b9c31e5c76dcc6f4a5afbe8bff5aaa433d99c74d5765cf4007cd2e5875cdd',
@@ -12,7 +13,7 @@ export const environment = {
   contractAdresses: {
     cryptoVitaeCompanyNFT: {
       scroll: '0xDC177b36a0Cf02eD99f6DBc8fF3E000B5E4ed980',
-      ether: '0x92824F583E3F4304b237696eEBf0D69204263651',
+      ether: '0x497d12890ea91a6c28211d75d5e2610623f9b7e1',
     },
   },
 };
