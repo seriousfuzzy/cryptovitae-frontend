@@ -4,7 +4,7 @@
 
 .animated-text span::before {
     content: "Crea";
-    color: #581FE6;
+    color: #10B981;
     animation: words 20s infinite;
 }
 
@@ -27,19 +27,19 @@
 
 @keyframes words {
     0%,20%{
-        content: "Crea";
+        content: "Impulsamos";
     }
     21%,40%{
-        content: "Asegurate";
+        content: "Validamos";
     }
     41%,60%{
-        content: "Etc";
+        content: "Innovamos";
     }
     61%,80%{
-        content: "Nose";
+        content: "Protegemos";
     }
     81%,100%{
-        content: "Ya decidimos luego";
+        content: "Transformamos";
     }
 }
 
