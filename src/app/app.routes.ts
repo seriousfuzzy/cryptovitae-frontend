@@ -9,6 +9,7 @@ import { RequestListComponent } from './auth/personal/request-list/request-list.
 import { CompaniesComponent } from './auth/company/companies/companies.component';
 import { CompanyInfoComponent } from './auth/company/company-info/company-info.component';
 import { ViewEmployeesComponent } from './auth/company/company-info/view-employees/view-employees.component';
+import { ViewProspectosComponent } from './auth/company/view-prospectos/view-prospectos.component';
 
 export const routes: Routes = [
   {
@@ -56,6 +57,10 @@ export const routes: Routes = [
           {
             path: 'employees',
             component: ViewEmployeesComponent,
+          },
+          {
+            path: 'prospectos',
+            component: ViewProspectosComponent,
           },
         ],
       },

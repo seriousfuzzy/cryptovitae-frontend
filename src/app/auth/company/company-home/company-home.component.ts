@@ -32,7 +32,7 @@ export class CompanyHomeComponent implements OnInit {
       name: 'Buscar prospectos',
       icon: 'pi-search',
       active: false,
-      route: '/auth/company/prospects',
+      route: '/auth/company/prospectos',
     },
   ];
 
