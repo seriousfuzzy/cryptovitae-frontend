@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -32,7 +32,7 @@ import { CompanyService } from '../../../services/company.service';
   templateUrl: './companies.component.html',
   styleUrl: './companies.component.css',
 })
-export class CompaniesComponent {
+export class CompaniesComponent implements OnInit {
   companyForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
@@ -58,7 +58,11 @@ export class CompaniesComponent {
     },
   ];
 
-  constructor(private router: Router, private companyService: CompanyService) {}
+  constructor(private router: Router, public companyService: CompanyService) {}
+
+  ngOnInit(): void {
+    this.companyService.getCompanies();
+  }
 
   onImageSelected(event: any) {
     console.log('Image selected:', event);
