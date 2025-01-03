@@ -103,6 +103,7 @@ export class CompanyService {
                 tokenUri
               );
             console.log('NFT created successfully:', transaction);
+            this.getCompanies();  
           } catch (error) {
             console.error('Error creating NFT:', error);
           }
