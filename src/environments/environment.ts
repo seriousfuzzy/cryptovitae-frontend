@@ -15,5 +15,8 @@ export const environment = {
       scroll: '0xDC177b36a0Cf02eD99f6DBc8fF3E000B5E4ed980',
       ether: '0xab3a58cdf3e9649dcb90c6df47037bc03941796a',
     },
+    cryptoVitaeReviewSBT: {
+      ether: '0xfa3e21c3796486ac10e305e50e597afc7b1a20d2',
+    },
   },
 };
