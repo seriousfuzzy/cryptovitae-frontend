@@ -17,6 +17,7 @@ export interface Company {
   description: string;
   category: string;
   imageUrl: string;
+  imageIpfs: string;
 }
 
 enum CompanyContracts {
@@ -72,6 +73,7 @@ export class CompanyService {
           description: metadata.description,
           category: metadata.category,
           imageUrl: `${gateway}/${imageCid}`,
+          imageIpfs: metadata.image,
         });
         this.companies.set(companies);
       }
