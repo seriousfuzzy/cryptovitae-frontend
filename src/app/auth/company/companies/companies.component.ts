@@ -13,7 +13,7 @@ import {
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import { CompanyService } from '../../../services/company.service';
+import { Company, CompanyService } from '../../../services/company.service';
 
 @Component({
   selector: 'app-companies',
@@ -69,8 +69,8 @@ export class CompaniesComponent implements OnInit {
     this.imageFile = event.currentFiles[0];
   }
 
-  goToCompanyInfo() {
-    this.router.navigate(['/auth/company/company-info']);
+  goToCompanyInfo(company: Company) {
+    this.router.navigate([`/auth/company/company-info/${company.tokenId}`]);
   }
 
   createCompany() {
