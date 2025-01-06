@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
@@ -57,11 +57,25 @@ export class CompaniesComponent implements OnInit {
       code: 'aseguramiento-de-la-calidad',
     },
   ];
+  userAddress: string | null = null;
 
-  constructor(private router: Router, public companyService: CompanyService) {}
+  constructor(
+    private router: Router,
+    public companyService: CompanyService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.companyService.getCompanies();
+    this.route.paramMap.subscribe((params) => {
+      const userAddress = params.get('userAddress');
+      if (userAddress) {
+        this.userAddress = userAddress;
+        console.log('User address:', this.userAddress);
+        localStorage.setItem('sharedUserAddress', this.userAddress);
+      }
+    });
+    console.log('user address 222', this.userAddress);
   }
 
   onImageSelected(event: any) {
