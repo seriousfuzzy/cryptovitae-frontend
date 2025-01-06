@@ -11,6 +11,7 @@ export interface ReviewData {
   description: string; //review
   image: string;
   companyName: string;
+  companyTokenId: number;
   startDate: string;
   endDate: string;
   skills: string[];
@@ -63,7 +64,9 @@ export class ReviewService {
                 await this.blockchainService.sendContractTransaction(
                   contract,
                   ReviewContracts.createSBT,
-                  tokenUri
+                  data.employeeAddress,
+                  tokenUri,
+                  data.companyTokenId
                 );
               console.log('Review created successfully:', transaction);
               // this.getCompanies();
