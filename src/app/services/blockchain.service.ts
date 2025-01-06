@@ -100,4 +100,12 @@ export class BlockchainService {
       }
     }
   }
+
+  async getMetamaskAddress(): Promise<string | null> {
+    if (this.provider) {
+      const signer = await this.provider.getSigner();
+      return signer.getAddress();
+    }
+    return null;
+  }
 }

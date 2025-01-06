@@ -5,6 +5,7 @@ import detectEthereumProvider from '@metamask/detect-provider';
   providedIn: 'root',
 })
 export class MetaMaskService {
+  public address: string | null = null;
   private provider: any;
 
   constructor() {
@@ -29,6 +30,7 @@ export class MetaMaskService {
         const accounts = await this.provider.request({
           method: 'eth_requestAccounts',
         });
+        this.address = accounts[0];
         return accounts[0];
       } catch (error) {
         console.error('User denied account access or error occurred:', error);
