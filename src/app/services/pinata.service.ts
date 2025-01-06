@@ -27,7 +27,7 @@ export class PinataService {
     });
   }
 
-  private uploadJson(jsonData: any): Observable<any> {
+  public uploadJson(jsonData: any): Observable<any> {
     const headers = new HttpHeaders({
       pinata_api_key: this.pinataApiKey,
       pinata_secret_api_key: this.pinataSecretApiKey,
