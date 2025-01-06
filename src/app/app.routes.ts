@@ -10,6 +10,7 @@ import { CompaniesComponent } from './auth/company/companies/companies.component
 import { CompanyInfoComponent } from './auth/company/company-info/company-info.component';
 import { ViewEmployeesComponent } from './auth/company/company-info/view-employees/view-employees.component';
 import { ViewProspectosComponent } from './auth/company/view-prospectos/view-prospectos.component';
+import { GenerateLinkComponent } from './auth/personal/generate-link/generate-link.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
         path: 'personal',
         component: PersonalHomeComponent,
         children: [
+          {
+            path: 'generate-link',
+            component: GenerateLinkComponent,
+          },
           {
             path: 'request-list',
             component: RequestListComponent,
@@ -48,6 +53,11 @@ export const routes: Routes = [
         children: [
           {
             path: 'my-companies',
+            redirectTo: 'my-companies/',
+            pathMatch: 'full',
+          },
+          {
+            path: 'my-companies/:userAddress',
             component: CompaniesComponent,
           },
           {

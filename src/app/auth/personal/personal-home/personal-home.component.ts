@@ -13,13 +13,12 @@ import { ButtonModule } from 'primeng/button';
 export class PersonalHomeComponent implements OnInit {
   constructor(private router: Router) {}
 
-  // Aca agregan las rutas que necesiten porfa
   sidebarItems = [
     {
-      name: 'Mis proyectos',
+      name: 'Generar enlace',
       icon: 'pi-briefcase',
       active: false,
-      route: '/app/manage-projects',
+      route: '/auth/personal/generate-link',
     },
     {
       name: 'Mis solicitudes',

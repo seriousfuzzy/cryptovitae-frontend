@@ -1,0 +1,13 @@
+<div class="flex items-center justify-center w-full h-[85vh] mt-8">
+  <div class="flex flex-col gap-8 items-center">
+    <h1 class="text-2xl text-center">
+      Genera tu enlace y permite que el administrador de la empresa agregue
+      contenido a tu CV
+    </h1>
+    <p-button label="Generar enlace" (onClick)="generateLink()"></p-button>
+
+    <div class="p-4 bg-slate-200 rounded-lg">
+        {{ link }}
+    </div>
+  </div>
+</div>
