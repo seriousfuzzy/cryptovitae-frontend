@@ -51,7 +51,7 @@ export const routes: Routes = [
             component: CompaniesComponent,
           },
           {
-            path: 'company-info',
+            path: 'company-info/:tokenId',
             component: CompanyInfoComponent,
           },
           {

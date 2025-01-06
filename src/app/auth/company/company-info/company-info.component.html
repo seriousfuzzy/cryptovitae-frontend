@@ -64,17 +64,10 @@
     <div class="flex justify-between items-center">
       <div class="text-black">
         <h1 class="text-3xl font-bold">{{ company.name }}</h1>
-        <p class="text-xl text-black">{{ company.job }}</p>
-        <p class="text-slate-800 mt-2">
-          <span class="font-semibold">Start Date:</span>
-          {{ company.startDate }}
-          <span class="ml-4 font-semibold">End Date:</span>
-          {{ company.endDate }}
-        </p>
       </div>
       <img
         class="w-32 h-32 rounded-full object-cover"
-        [src]="company.logoUrl"
+        [src]="company.imageUrl"
         alt="{{ company.name }} Logo"
       />
     </div>
