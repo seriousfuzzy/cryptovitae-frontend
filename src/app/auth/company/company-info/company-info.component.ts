@@ -66,12 +66,13 @@ export class CompanyInfoComponent {
       description: this.reviewForm.value.review,
       image: this.company.imageIpfs,
       companyName: this.company.name,
+      companyTokenId: Number(this.company.tokenId.toString()),
       startDate: this.reviewForm.value.startDate.toISOString(),
       endDate: this.reviewForm.value.endDate.toISOString(),
       skills: this.reviewForm.value.skills.split(','),
     };
-    console.log('Review data:', reviewData);
     this.reviewService.createReview(reviewData);
+    this.display = false;
   }
 
   showDialog() {
