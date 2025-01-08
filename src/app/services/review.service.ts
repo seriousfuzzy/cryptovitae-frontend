@@ -29,6 +29,7 @@ export interface Review {
   startDate: string;
   endDate: string;
   skills: string[];
+  visibility: boolean;
 }
 
 enum ReviewContracts {
@@ -101,6 +102,7 @@ export class ReviewService {
           startDate: metadata.startDate,
           endDate: metadata.endDate,
           skills: metadata.skills,
+          visibility: reviewResponse.visibility,
         });
         this.reviews.set(reviews);
       }
