@@ -42,6 +42,7 @@ export class CompanyInfoComponent {
     skills: new FormControl('', Validators.required),
     review: new FormControl('', Validators.required),
   });
+  sharedUserAddress: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -53,6 +54,16 @@ export class CompanyInfoComponent {
     this.company = this.companyService
       .companies()!
       .find((company) => company.tokenId == tokenId)!;
+
+    const sharedUserAddress = localStorage.getItem('sharedUserAddress');
+    if (sharedUserAddress) {
+      this.sharedUserAddress = sharedUserAddress;
+      console.log('Shared user address retrieved',this.sharedUserAddress);
+      this.reviewForm.patchValue({
+        employeeAddress: this.sharedUserAddress,
+      });
+      localStorage.removeItem('sharedUserAddress');
+    }
   }
 
   onSubmit() {
