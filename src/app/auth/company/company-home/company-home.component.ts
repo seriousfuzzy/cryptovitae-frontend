@@ -47,7 +47,5 @@ export class CompanyHomeComponent implements OnInit {
     this.router.navigate([item.route]);
   }
 
-  logout(): void {
-    this.router.navigate(['']);
-  }
+  logout(): void {}
 }

@@ -147,13 +147,18 @@
                   </div>
                 </div>
 
-                <div class="field w-full">
+                <div class="field">
                   <label
                     for="skills"
                     class="block text-sm font-semibold text-gray-700"
                     >Skills</label
                   >
-                  <p-chips formControlName="skills" class="!w-full" />
+                  <input
+                    pInputText
+                    id="skills"
+                    class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                    formControlName="skills"
+                  />
                 </div>
 
                 <div class="field">
