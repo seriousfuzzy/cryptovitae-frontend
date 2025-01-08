@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
-import { CompanyRequestService } from '../../services/company-request.service';
-import { Company } from '../../../interfaces/company.interface';
+import { ReviewService } from '../../../services/review.service';
 @Component({
   selector: 'app-request-list',
   standalone: true,
@@ -12,14 +11,11 @@ import { Company } from '../../../interfaces/company.interface';
   templateUrl: './request-list.component.html',
   styleUrl: './request-list.component.css',
 })
-export class RequestListComponent {
-  mockCompanies: Company[] = [];
+export class RequestListComponent implements OnInit {
+  constructor(private router: Router, public reviewService: ReviewService) {}
 
-  constructor(
-    private router: Router,
-    private companyRequestService: CompanyRequestService
-  ) {
-    this.mockCompanies = this.companyRequestService.mockCompanies;
+  ngOnInit(): void {
+    this.reviewService.getReviews();
   }
 
   goToConfirmation(id: number): void {

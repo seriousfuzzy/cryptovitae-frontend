@@ -1,21 +1,21 @@
 <div class="w-4/5 mx-auto pt-8">
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    @for (review of reviewService.reviews(); track $index) {
     <p-card
-      *ngFor="let company of mockCompanies"
-      header="{{ company.name }}"
-      subheader="{{ company.job }}"
-      [style]="{ width: '100%' }"
+      header="{{ review.companyName }}"
+      subheader="{{ review.role }}"
+      [style]="{ width: '100%', hidden: !review.visibility }"
     >
       <ng-template pTemplate="header">
         <div class="flex justify-center">
           <img
             alt="Card"
-            src="{{ company.logoUrl }}"
+            src="{{ review.companyImageUrl }}"
             class="w-full h-auto max-h-32 object-contain"
           />
         </div>
       </ng-template>
-      <p>{{ company.description }}</p>
+      <p>{{ review.review }}</p>
       <ng-template pTemplate="footer">
         <div class="flex gap-3 mt-1">
           <!-- <p-button
@@ -28,10 +28,11 @@
             label="See more.."
             class="w-full"
             styleClass="w-full"
-            (click)="goToConfirmation(company.id)"
+            (click)="goToConfirmation(review.tokenId)"
           />
         </div>
       </ng-template>
     </p-card>
+    }
   </div>
 </div>
