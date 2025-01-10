@@ -16,7 +16,7 @@ export const environment = {
       ether: '0xab3a58cdf3e9649dcb90c6df47037bc03941796a',
     },
     cryptoVitaeReviewSBT: {
-      ether: '0x7C047890599545cEb6FbF153B59b66b327104fb0',
+      ether: '0x3455678e7Ca519179F094a256336A1E09d086677',
     },
   },
 };
