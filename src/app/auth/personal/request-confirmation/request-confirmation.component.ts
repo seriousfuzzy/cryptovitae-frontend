@@ -25,8 +25,7 @@ export class RequestConfirmationComponent {
   }
 
   confirm(review: Review) {
-    // call the service to confirm the review
-    this.router.navigate(['/auth/personal/request-list']);
+    this.reviewService.confirmReview(review.tokenId);
   }
 
   reject() {
