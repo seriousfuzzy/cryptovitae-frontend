@@ -15,6 +15,7 @@ import {
 } from '@angular/forms';
 import { Company, CompanyService } from '../../../services/company.service';
 import { ReviewService } from '../../../services/review.service';
+import { ChipsModule } from 'primeng/chips';
 
 @Component({
   selector: 'app-company-info',
@@ -27,6 +28,7 @@ import { ReviewService } from '../../../services/review.service';
     InputTextareaModule,
     CalendarModule,
     ReactiveFormsModule,
+    ChipsModule,
   ],
   templateUrl: './company-info.component.html',
   styleUrl: './company-info.component.css',
@@ -80,7 +82,7 @@ export class CompanyInfoComponent {
       companyTokenId: Number(this.company.tokenId.toString()),
       startDate: this.reviewForm.value.startDate.toISOString(),
       endDate: this.reviewForm.value.endDate.toISOString(),
-      skills: this.reviewForm.value.skills.split(','),
+      skills: this.reviewForm.value.skills,
     };
     this.reviewService.createReview(reviewData);
     this.display = false;
