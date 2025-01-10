@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CompanyRequestService } from '../../services/company-request.service';
 import { CommonModule } from '@angular/common';
-import { Company } from '../../../interfaces/company.interface';
-import { RequestConfirmedService } from '../../services/request-confirmed.service';
+import { Review, ReviewService } from '../../../services/review.service';
 
 @Component({
   selector: 'app-request-confirmation',
@@ -12,32 +10,25 @@ import { RequestConfirmedService } from '../../services/request-confirmed.servic
   templateUrl: './request-confirmation.component.html',
   styleUrl: './request-confirmation.component.css',
 })
-export class RequestConfirmationComponent implements OnInit {
-  company: Company | undefined;
+export class RequestConfirmationComponent {
+  review: Review;
 
   constructor(
     private activeRoute: ActivatedRoute,
     private router: Router,
-    private companyRequestService: CompanyRequestService,
-    private requestConfirmedService: RequestConfirmedService
-  ) {}
-  ngOnInit(): void {
-    const companyId = this.activeRoute.snapshot.paramMap.get('id');
-    if (companyId) {
-      this.company = this.companyRequestService.mockCompanies.find(
-        (company) => company.id === +companyId
-      );
-    }
+    private reviewService: ReviewService
+  ) {
+    const reviewId = this.activeRoute.snapshot.paramMap.get('id')!;
+    this.review = this.reviewService
+      .reviews()
+      ?.find((x) => x.tokenId === Number(reviewId))!;
   }
-  confirm(company: Company) {
-    this.requestConfirmedService.addRequestConfirmed(company);
-    // delete selected company from the list and add the selected into the confirmed list into request-confirmed.service.ts
-    this.companyRequestService.mockCompanies =
-      this.companyRequestService.mockCompanies.filter(
-        (comp) => comp.id !== company.id
-      );
+
+  confirm(review: Review) {
+    // call the service to confirm the review
     this.router.navigate(['/auth/personal/request-list']);
   }
+
   reject() {
     this.router.navigate(['/auth/personal/request-list']);
   }

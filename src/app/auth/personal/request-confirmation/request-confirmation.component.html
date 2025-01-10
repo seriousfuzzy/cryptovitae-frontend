@@ -3,42 +3,42 @@
     <div class="mb-4 flex items-center justify-between">
       <div class="flex flex-col">
         <div class="flex items-center gap-2">
-          <h1 class="text-3xl font-bold">{{ company!.name }}</h1>
+          <h1 class="text-3xl font-bold">{{ review.companyName }}</h1>
 
           <div class="text-gray-600 text-sm flex items-center gap-4">
             <p>
-              {{ company!.startDate | date : "MMM d, y" }} -
-              {{ company!.endDate | date : "MMM d, y" }}
+              {{ review.startDate | date : "MMM d, y" }} -
+              {{ review.endDate | date : "MMM d, y" }}
             </p>
           </div>
         </div>
-        <h2 class="text-xl text-gray-600">{{ company!.job }}</h2>
+        <h2 class="text-xl text-gray-600">{{ review.role }}</h2>
       </div>
 
       <div
         class="bg-gray-800 text-white px-4 py-1 rounded-full text-lg font-semibold"
       >
-        ID: {{ company!.id }}
+        ID: {{ review.tokenId }}
       </div>
     </div>
 
     <div class="flex justify-center mb-6">
       <img
         alt="Company Logo"
-        src="{{ company!.logoUrl }}"
+        src="{{ review.companyImageUrl }}"
         class="w-32 h-32 object-contain"
       />
     </div>
 
     <div class="mb-6">
-      <p class="text-gray-700 truncate ...">{{ company!.description }}</p>
+      <p class="text-gray-700 truncate ...">{{ review.review }}</p>
     </div>
 
     <div class="mb-6">
       <h3 class="text-xl font-semibold mb-2">Skills & Technologies</h3>
       <div class="flex flex-wrap gap-2">
         <span
-          *ngFor="let skill of company!.skills"
+          *ngFor="let skill of review.skills"
           class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full"
           >{{ skill }}</span
         >
@@ -48,16 +48,16 @@
     <div class="flex gap-4">
       <button
         class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-        (click)="confirm(company!)"
+        (click)="confirm(review)"
       >
         Confirm
       </button>
-      <button
+      <!-- <button
         class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
         (click)="reject()"
       >
         Reject
-      </button>
+      </button> -->
     </div>
   </div>
 </div>
