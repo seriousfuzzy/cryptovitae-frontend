@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { CompanyRequestService } from '../../services/company-request.service';
-import { Company } from '../../../interfaces/company.interface';
-import { RequestConfirmedService } from '../../services/request-confirmed.service';
+import { ReviewService } from '../../../services/review.service';
 
 @Component({
   selector: 'app-cv-summary',
@@ -12,13 +10,11 @@ import { RequestConfirmedService } from '../../services/request-confirmed.servic
   styleUrl: './cv-summary.component.css',
 })
 export class CvSummaryComponent {
-  companies: Company[] = [];
-  constructor(
-    private companyRequestService: CompanyRequestService,
-    private requestConfirmedService: RequestConfirmedService
-  ) {
-    const confirmedRequests =
-      this.requestConfirmedService.getConfirmedRequests();
-    this.companies = confirmedRequests;
+  get acceptedReviews() {
+    return (
+      this.reviewService.reviews()?.filter((review) => review.visibility) || []
+    );
   }
+
+  constructor(private reviewService: ReviewService) {}
 }
