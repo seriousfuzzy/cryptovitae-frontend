@@ -45,5 +45,7 @@ export class PersonalHomeComponent implements OnInit {
     this.router.navigate([item.route]);
   }
 
-  logout(): void {}
+  logout(): void {
+    this.router.navigate(['']);
+  }
 }
