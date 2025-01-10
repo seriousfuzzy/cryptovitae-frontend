@@ -37,6 +37,7 @@ enum ReviewContracts {
   approveSBT = 'approveSBT',
   getReviewsByEmployee = 'getReviewsByEmployee',
   getReview = 'getReview',
+  getReviewsByCompany = 'getReviewsByCompany',
 }
 
 @Injectable({
@@ -66,6 +67,66 @@ export class ReviewService {
         contract,
         ReviewContracts.getReviewsByEmployee,
         employeeAddress
+      );
+      const tokenIds = Array.from(tokenIdsProxy).map((id: any) =>
+        Number(id.toString())
+      );
+
+      const reviews: Review[] = [];
+      for (const tokenId of tokenIds) {
+        const reviewProxy = await this.blockchainService.callContractMethod(
+          contract,
+          ReviewContracts.getReview,
+          tokenId
+        );
+        const reviewResponse = {
+          ipfsUrl: reviewProxy[0],
+          visibility: Number(reviewProxy[1].toString()) === 1,
+          companyNFTId: Number(reviewProxy[2].toString()),
+        };
+
+        const gateway = environment.pinata.ipfsGateway;
+        const reviewCid = reviewResponse.ipfsUrl.replace('ipfs://', '');
+        const reviewUrl = `${gateway}/${reviewCid}`;
+        const metadataResponse = await fetch(reviewUrl);
+        const metadata = await metadataResponse.json();
+        const companyImageCid = metadata.image.replace('ipfs://', '');
+
+        reviews.push({
+          tokenId,
+          role: metadata.name,
+          review: metadata.description,
+          companyImageUrl: `${gateway}/${companyImageCid}`,
+          companyImageIpfs: metadata.image,
+          companyName: metadata.companyName,
+          companyTokenId: metadata.companyTokenId,
+          startDate: metadata.startDate,
+          endDate: metadata.endDate,
+          skills: metadata.skills,
+          visibility: reviewResponse.visibility,
+        });
+        this.reviews.set(reviews);
+      }
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+    }
+  }
+
+  async getReviewsByCompany() {
+    const contract = await this.blockchainService.getContractInstance(
+      CryptoVitaeReviewSBTAbi,
+      environment.contractAddresses.cryptoVitaeReviewSBT.ether
+    );
+    if (!contract) {
+      console.error('No contract found');
+      return;
+    }
+    try {
+      const companyAddress = await this.metaMaskService.getAccount();
+      const tokenIdsProxy = await this.blockchainService.callContractMethod(
+        contract,
+        ReviewContracts.getReviewsByCompany,
+        companyAddress
       );
       const tokenIds = Array.from(tokenIdsProxy).map((id: any) =>
         Number(id.toString())
