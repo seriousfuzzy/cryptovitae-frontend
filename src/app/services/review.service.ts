@@ -185,8 +185,6 @@ export class ReviewService {
             environment.contractAddresses.cryptoVitaeReviewSBT.ether
           );
 
-          console.log('Contract:', contract);
-
           if (contract) {
             try {
               const transaction =
@@ -205,5 +203,32 @@ export class ReviewService {
         })
       )
       .subscribe();
+  }
+
+  async confirmReview(tokenId: number) {
+    const contract = await this.blockchainService.getContractInstance(
+      CryptoVitaeReviewSBTAbi,
+      environment.contractAddresses.cryptoVitaeReviewSBT.ether
+    );
+
+    if (!contract) {
+      console.error('No contract found');
+      return;
+    }
+
+    try {
+      const transaction = await this.blockchainService.sendContractTransaction(
+        contract,
+        ReviewContracts.approveSBT,
+        tokenId
+      );
+
+      await transaction.wait();
+
+      this.getReviews();
+      console.log('Review confirmed:', transaction);
+    } catch (error) {
+      console.error('Error confirming review:', error);
+    }
   }
 }

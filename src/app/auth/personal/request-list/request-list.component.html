@@ -1,10 +1,10 @@
 <div class="w-4/5 mx-auto pt-8">
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    @for (review of reviewService.reviews(); track $index) {
+    @for (review of pendingReviews; track $index) {
     <p-card
       header="{{ review.companyName }}"
       subheader="{{ review.role }}"
-      [style]="{ width: '100%', hidden: !review.visibility }"
+      [style]="{ width: '100%' }"
     >
       <ng-template pTemplate="header">
         <div class="flex justify-center">

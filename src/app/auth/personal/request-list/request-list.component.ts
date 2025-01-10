@@ -14,6 +14,12 @@ import { ReviewService } from '../../../services/review.service';
 export class RequestListComponent implements OnInit {
   constructor(private router: Router, public reviewService: ReviewService) {}
 
+  get pendingReviews() {
+    return (
+      this.reviewService.reviews()?.filter((review) => !review.visibility) || []
+    );
+  }
+
   ngOnInit(): void {
     this.reviewService.getReviews();
   }
