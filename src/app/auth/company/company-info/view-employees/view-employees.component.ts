@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, OnInit } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import { ReviewService } from '../../../../services/review.service';
 
 @Component({
   selector: 'app-view-employees',
@@ -23,28 +24,11 @@ import { FormsModule } from '@angular/forms';
 export class ViewEmployeesComponent implements OnInit {
   employees: any[] = [];
 
-  ngOnInit(): void {
-    this.employees = [
-      {
-        id: 1,
-        name: 'John Doe',
-        skills: ['React', 'Node.js', 'MongoDB'],
-        profession: 'Software Engineer',
-      },
-      {
-        id: 1,
-        name: 'John Doe',
-        skills: ['React', 'Node.js', 'MongoDB'],
-        profession: 'Software Engineer',
-      },
-      {
-        id: 1,
-        name: 'John Doe',
-        skills: ['React', 'Node.js', 'MongoDB'],
-        profession: 'Software Engineer',
-      },
-    ];
+  constructor(public reviewService: ReviewService) {
+    this.reviewService.getReviewsByCompany();
   }
+
+  async ngOnInit(): Promise<void> {}
 
   getSeverity(status: string): any {
     switch (status) {
