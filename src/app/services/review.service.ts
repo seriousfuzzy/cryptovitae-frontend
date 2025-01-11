@@ -45,6 +45,7 @@ enum ReviewContracts {
 })
 export class ReviewService {
   reviews = signal<Review[] | null>(null);
+  employees = signal<Review[] | null>(null);
 
   constructor(
     private pinataService: PinataService,
@@ -165,7 +166,8 @@ export class ReviewService {
           skills: metadata.skills,
           visibility: reviewResponse.visibility,
         });
-        this.reviews.set(reviews);
+        console.log('Reviews:', reviews);
+        this.employees.set(reviews);
       }
     } catch (error) {
       console.error('Error fetching reviews:', error);
