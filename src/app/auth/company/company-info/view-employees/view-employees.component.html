@@ -1,5 +1,8 @@
 <div class="card">
-  <p-table [value]="employees" [tableStyle]="{ 'min-width': '60rem' }">
+  <p-table
+    [value]="reviewService.employees()!"
+    [tableStyle]="{ 'min-width': '60rem' }"
+  >
     <ng-template pTemplate="caption">
       <div class="flex align-items-center justify-content-between">
         Employees
@@ -7,21 +10,30 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th>Name</th>
-        <th>Profession</th>
+        <th>Token Id</th>
+        <th>Role</th>
+        <th>Company name</th>
+        <th>Company image</th>
         <th>Skills</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-employee>
       <tr>
-        <!-- Name -->
-        <td>{{ employee.name }}</td>
-        <!-- Profesion -->
-        <td>{{ employee.profession }}</td>
-        <!-- Skills -->
+        <!-- Token Id -->
+        <td>{{ employee.tokenId }}</td>
+        <!-- Role -->
+        <td>
+          <p-tag [value]="employee.role" severity="secondary"></p-tag>
+        </td>
+        <!-- Company name -->
+        <td>{{ employee.companyName }}</td>
+        <!-- Company Image -->
+        <td>
+          <img [src]="employee.companyImageUrl" width="100" class="shadow-4" />
+        </td>
         <td>
           @for (tag of employee.skills; track $index) {
-          <p-tag [value]="tag" [severity]="'danger'" />
+          <p-tag [value]="tag" [severity]="'success'" class="mr-1" />
           }
         </td>
       </tr>
