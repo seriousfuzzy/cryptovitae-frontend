@@ -25,12 +25,37 @@
       />
 
       <p-button
-        label="Metamask"
-        (onClick)="login()"
+        label="Ethereum Sepolia"
+        (onClick)="loginWithEthereum()"
         [rounded]="true"
         [outlined]="true"
         [disabled]="!categoryControl.value"
       ></p-button>
+
+      <p-button
+        label="Arbitrum Sepolia"
+        (onClick)="loginWithArbitrum()"
+        [rounded]="true"
+        [outlined]="true"
+        [disabled]="!categoryControl.value"
+      ></p-button>
+
+      <p-button
+        label="Scroll Sepolia"
+        (onClick)="loginWithScroll()"
+        [rounded]="true"
+        [outlined]="true"
+        [disabled]="!categoryControl.value"
+      ></p-button>
+
+      <p-button
+        label="Avalanche Fuji"
+        (onClick)="loginWithAvalanche()"
+        [rounded]="true"
+        [outlined]="true"
+        [disabled]="!categoryControl.value"
+      ></p-button>
+
       <p-toast />
     </div>
   </div>
