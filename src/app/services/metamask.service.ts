@@ -7,6 +7,7 @@ import detectEthereumProvider from '@metamask/detect-provider';
 export class MetaMaskService {
   public address: string | null = null;
   private provider: any;
+  public chainId: number = 0;
 
   constructor() {
     this.initMetaMask();
@@ -24,11 +25,16 @@ export class MetaMaskService {
     }
   }
 
-  public async connectMetaMask(): Promise<string | null> {
+  public async connectMetaMask(chainId: number): Promise<string | null> {
     if (this.provider) {
       try {
         const accounts = await this.provider.request({
           method: 'eth_requestAccounts',
+        });
+        this.chainId = chainId;
+        await this.provider.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: `0x${chainId.toString(16)}` }],
         });
         this.address = accounts[0];
         return accounts[0];

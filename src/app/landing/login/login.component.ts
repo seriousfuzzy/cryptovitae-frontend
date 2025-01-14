@@ -11,6 +11,7 @@ import { ToastModule } from 'primeng/toast';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { MetaMaskService } from '../../services/metamask.service';
 import { DropdownModule } from 'primeng/dropdown';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -44,8 +45,40 @@ export class LoginComponent {
     private metaMaskService: MetaMaskService
   ) {}
 
-  async login(): Promise<void> {
-    const account = await this.metaMaskService.connectMetaMask();
+  async loginWithEthereum(): Promise<void> {
+    await this.login('ether');
+  }
+
+  async loginWithArbitrum(): Promise<void> {
+    await this.login('arbitrum');
+  }
+
+  async loginWithScroll(): Promise<void> {
+    await this.login('scroll');
+  }
+
+  async loginWithAvalanche(): Promise<void> {
+    await this.login('avalanche');
+  }
+
+  async login(chain: string): Promise<void> {
+    let chainId = 0;
+    switch (chain) {
+      case 'ether':
+        chainId = environment.chainIds.ether;
+        break;
+      case 'arbitrum':
+        chainId = environment.chainIds.arbitrum;
+        break;
+      case 'scroll':
+        chainId = environment.chainIds.scroll;
+        break;
+      case 'avalanche':
+        chainId = environment.chainIds.avalanche;
+        break;
+    }
+
+    const account = await this.metaMaskService.connectMetaMask(chainId);
     if (!account) {
       console.error('Failed to connect to MetaMask');
       this.messageService.add({

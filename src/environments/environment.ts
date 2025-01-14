@@ -9,14 +9,28 @@ export const environment = {
   },
   chainIds: {
     scroll: 534351,
+    ether: 11155111,
+    arbitrum: 421614,
+    avalanche: 43113,
   },
   contractAddresses: {
     cryptoVitaeCompanyNFT: {
-      scroll: '0xDC177b36a0Cf02eD99f6DBc8fF3E000B5E4ed980',
+      scroll: '0x02b9e06E1Ee07D34bE4A8C208E0406356C22a4A7',
       ether: '0xab3a58cdf3e9649dcb90c6df47037bc03941796a',
+      arbitrum: '0xAB3A58CDF3e9649dcb90c6dF47037bc03941796A',
+      avalanche: '0xAB3A58CDF3e9649dcb90c6dF47037bc03941796A',
     },
     cryptoVitaeReviewSBT: {
       ether: '0x3455678e7Ca519179F094a256336A1E09d086677',
+      arbitrum: '0x303e925b97842Be14D97740D3861C2f214313e91',
+      scroll: '0xce9aEDb510730b93b4f80536caE8fF4Cd58Adb6D',
+      avalanche: '0xD5aCA6218CbE4770E5E12ddfD1a8FF3d7094B60D',
+    },
+    cryptoVitaeProfileSBT: {
+      ether: '0xb339a46C6714FcaeEDB9BaED322e979482F53057',
+      arbitrum: '0x4c69230bCE8080A1bC22D11a97135A0339B4cB0a',
+      scroll: '0xfC8A86cAf569E042A3353feD4BF875e082fE8b68',
+      avalanche: '0x303e925b97842Be14D97740D3861C2f214313e91',
     },
   },
 };
