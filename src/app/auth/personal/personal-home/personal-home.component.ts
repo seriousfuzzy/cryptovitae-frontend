@@ -15,20 +15,20 @@ export class PersonalHomeComponent implements OnInit {
 
   sidebarItems = [
     {
-      name: 'Mi enlace',
-      icon: 'pi-link',
+      name: 'Generar enlace',
+      icon: 'pi-briefcase',
       active: false,
       route: '/auth/personal/generate-link',
     },
     {
       name: 'Mis solicitudes',
-      icon: 'pi-user-edit',
+      icon: 'pi-chart-bar',
       active: false,
       route: '/auth/personal/request-list',
     },
     {
       name: 'Mi CV',
-      icon: 'pi-ethereum',
+      icon: 'pi-search',
       active: false,
       route: '/auth/personal/summary',
     },

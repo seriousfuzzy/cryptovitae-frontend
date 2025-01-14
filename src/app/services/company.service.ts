@@ -3,6 +3,7 @@ import { BlockchainService } from './blockchain.service';
 import { PinataService } from './pinata.service';
 import CryptoVitaeCompanyNFTAbi from '../../assets/abis/CryptoVitaeCompanyNFT.json';
 import { environment } from '../../environments/environment';
+import { MetaMaskService } from './metamask.service';
 
 export interface CompanyData {
   name: string;
@@ -34,13 +35,32 @@ export class CompanyService {
 
   constructor(
     private pinataService: PinataService,
-    private blockchainService: BlockchainService
+    private blockchainService: BlockchainService,
+    private metaMaskService: MetaMaskService
   ) {}
+
+  getContractAddress(): string {
+    const chainId = this.metaMaskService.chainId;
+    const chainIds = environment.chainIds;
+    switch (chainId) {
+      case chainIds.arbitrum:
+        return environment.contractAddresses.cryptoVitaeCompanyNFT.arbitrum;
+      case chainIds.scroll:
+        return environment.contractAddresses.cryptoVitaeCompanyNFT.scroll;
+      case chainIds.avalanche:
+        return environment.contractAddresses.cryptoVitaeCompanyNFT.avalanche;
+      case chainIds.ether:
+        return environment.contractAddresses.cryptoVitaeCompanyNFT.ether;
+      default:
+        console.error('Chain ID not supported:', chainId);
+        return '';
+    }
+  }
 
   async getCompanies(): Promise<void> {
     const contract = await this.blockchainService.getContractInstance(
       CryptoVitaeCompanyNFTAbi,
-      environment.contractAddresses.cryptoVitaeCompanyNFT.ether
+      this.getContractAddress()
     );
     if (!contract) {
       console.error('No contract found');
@@ -93,7 +113,7 @@ export class CompanyService {
       .subscribe(async (tokenUri) => {
         const contract = await this.blockchainService.getContractInstance(
           CryptoVitaeCompanyNFTAbi,
-          environment.contractAddresses.cryptoVitaeCompanyNFT.ether
+          this.getContractAddress()
         );
 
         if (contract) {
@@ -105,7 +125,7 @@ export class CompanyService {
                 tokenUri
               );
             console.log('NFT created successfully:', transaction);
-            this.getCompanies();  
+            this.getCompanies();
           } catch (error) {
             console.error('Error creating NFT:', error);
           }
